@@ -34,8 +34,8 @@ function verifyToken(req, res, next) {
 }
 
 app.post('/api/authoradd',function(req,res){
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
     console.log(req.body)
     var author={
         authorName:req.body.author.authorName,
@@ -49,8 +49,8 @@ app.post('/api/authoradd',function(req,res){
 })
 
 app.post('/api/bookadd',function(req,res){
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
     var book={
         bookTitle:req.body.book.bookTitle,
         bookAuthor:req.body.book.bookAuthor,
@@ -62,16 +62,16 @@ app.post('/api/bookadd',function(req,res){
 })
 
 app.get('/api/books',function(req,res){
-    // res.header("Access-Control-Allow-Origin","*")
-    // res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS')
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS');
     Book.find()
                 .then(function(books){
                     res.send(books);
                 });
 });
 app.get('/api/authors', function(req,res){
-    // res.header("Access-Control-Allow-Origin","*")
-    // res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS')
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS');
     Author.find()
     .then(function(authors)
     {
@@ -80,8 +80,8 @@ app.get('/api/authors', function(req,res){
 })
 
 app.delete('/api/authordelete/:id',function(req,res){
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
 
   let id= req.params.id;
   console.log(id);
@@ -94,8 +94,8 @@ app.delete('/api/authordelete/:id',function(req,res){
 
 app.delete("/api/bookdelete/:id", function(req,res){
     console.log("im in delete");
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
 
     let id =req.params.id;
     console.log(id);
@@ -108,8 +108,8 @@ app.delete("/api/bookdelete/:id", function(req,res){
 })
 
 app.get('/api/author/:id', function(req,res){
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
     let id= req.params.id;
     console.log(id);
     Author.find({"_id":id})
@@ -121,8 +121,8 @@ app.get('/api/author/:id', function(req,res){
 })
 
 app.get('/api/book/:id', function(req,res){
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET, POST,PATCH,PUT,DELETE,OPTIONS");
     let id= req.params.id;
     
     Book.find({"_id":id})
@@ -134,8 +134,8 @@ app.get('/api/book/:id', function(req,res){
 })
 
 app.post('/api/signup',function(req,res){
-    res.header("Access-Control-Allow-Origin","*")
-    res.header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS")
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
      let userData= req.body;
      let user = new User(userData);
      user.save((err,registeredUser)=>{
